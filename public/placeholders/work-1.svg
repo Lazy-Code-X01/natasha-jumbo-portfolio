@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="800" height="600" viewBox="0 0 800 600">
+  <rect width="800" height="600" fill="#c9c7ba"/>
+  <rect x="1" y="1" width="798" height="598" fill="none" stroke="#4b524c" stroke-width="2" stroke-dasharray="8 6"/>
+  <text x="400" y="288" text-anchor="middle" font-family="sans-serif" font-size="26" fill="#4b524c">Work Placeholder</text>
+  <text x="400" y="322" text-anchor="middle" font-family="sans-serif" font-size="16" fill="#4b524c">TODO — replace with real project visual</text>
+</svg>
