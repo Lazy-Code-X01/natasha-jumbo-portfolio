@@ -1,14 +1,29 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { motion, type Variants } from "framer-motion";
 import Image from "next/image";
 import { Mic, Play } from "lucide-react";
 import { speakingHighlights } from "@/lib/content";
-import { scrollFadeUpProps } from "@/lib/motion";
+import { scrollFadeUpProps, staggerContainer } from "@/lib/motion";
 
-// Alternating tilt gives these a candid, tossed-on-the-desk polaroid
-// feel — deliberately different from Work's clean, squared-off grid.
-const TILTS = ["-rotate-3", "rotate-2", "-rotate-2", "rotate-3"];
+// Alternating tilt gives these a candid, tossed-on-the-desk polaroid feel —
+// deliberately different from Work's clean, squared-off grid. Built into the
+// motion variant (not a Tailwind rotate-* class) because Framer Motion's `y`
+// animation sets its own inline `transform`, which would otherwise silently
+// override any CSS-class-based rotation the moment the entrance animates.
+const TILT_DEGREES = [-3, 2, -2, 3];
+
+function tiltVariants(rotate: number): Variants {
+  return {
+    hidden: { opacity: 0, y: 24, rotate },
+    visible: {
+      opacity: 1,
+      y: 0,
+      rotate,
+      transition: { duration: 0.7, ease: [0.22, 1, 0.36, 1] },
+    },
+  };
+}
 
 export default function OnStage() {
   return (
@@ -29,7 +44,13 @@ export default function OnStage() {
       </motion.div>
 
       <div className="relative">
-        <div className="flex md:grid md:grid-cols-4 gap-6 md:gap-8 overflow-x-auto md:overflow-visible no-scrollbar scroll-snap-x pt-2 pb-6">
+        <motion.div
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, amount: 0.2 }}
+          variants={staggerContainer(0.1)}
+          className="flex md:grid md:grid-cols-4 gap-6 md:gap-8 overflow-x-auto md:overflow-visible no-scrollbar scroll-snap-x pt-2 pb-6"
+        >
           {speakingHighlights.map((highlight, i) => {
             const Wrapper = highlight.url ? motion.a : motion.figure;
             const linkProps = highlight.url
@@ -44,9 +65,10 @@ export default function OnStage() {
               <Wrapper
                 key={highlight.title}
                 {...linkProps}
+                variants={tiltVariants(TILT_DEGREES[i % TILT_DEGREES.length])}
                 whileHover={{ rotate: 0, y: -6, scale: 1.03 }}
                 transition={{ type: "spring", stiffness: 300, damping: 20 }}
-                className={`group shrink-0 w-56 md:w-full snap-start bg-canvas p-3 pb-6 shadow-md block ${TILTS[i % TILTS.length]}`}
+                className="group shrink-0 w-56 md:w-full snap-start bg-canvas p-3 pb-6 shadow-md block"
               >
                 <div className="relative aspect-square w-full overflow-hidden">
                   {highlight.isPlaceholder ? (
@@ -87,7 +109,7 @@ export default function OnStage() {
               </Wrapper>
             );
           })}
-        </div>
+        </motion.div>
 
         {/* hints that the strip scrolls further — mobile only */}
         <div className="md:hidden pointer-events-none absolute inset-y-0 right-0 w-10 bg-gradient-to-l from-canvas to-transparent" />

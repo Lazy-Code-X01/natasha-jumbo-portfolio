@@ -35,10 +35,8 @@ function EmphasisMark() {
 
 export default function Work() {
   return (
-    <section
-      id="work"
-      className="px-6 md:px-10 py-20 md:py-28 max-w-content mx-auto"
-    >
+    <section id="work" className="bg-canvas-deep px-6 md:px-10 py-20 md:py-28">
+      <div className="max-w-content mx-auto">
       <motion.div {...scrollFadeUpProps} className="mb-12 md:mb-16 max-w-2xl">
         <span className="text-sm uppercase tracking-widest text-ink-soft">
           Selected work
@@ -76,13 +74,13 @@ export default function Work() {
             className={`group overflow-hidden rounded-sm flex flex-col ${
               project.isPlaceholder
                 ? "border border-dashed border-line bg-transparent"
-                : "border border-line bg-canvas-deep/60 hover:border-clay/50 hover:shadow-lg transition-[border-color,box-shadow]"
+                : "border border-line bg-canvas hover:border-clay/50 hover:shadow-lg transition-[border-color,box-shadow]"
             }`}
           >
             <div
               className={`relative aspect-[4/3] w-full overflow-hidden ${
                 !project.isPlaceholder && project.imageFit === "contain"
-                  ? "bg-canvas-deep/40"
+                  ? "bg-canvas-deep/20"
                   : ""
               }`}
             >
@@ -178,6 +176,7 @@ export default function Work() {
           </motion.div>
         ))}
       </motion.div>
+      </div>
     </section>
   );
 }

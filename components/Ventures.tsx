@@ -3,6 +3,7 @@
 import { Fragment } from "react";
 import { motion } from "framer-motion";
 import Image from "next/image";
+import { ArrowUpRight } from "lucide-react";
 import { ventures } from "@/lib/content";
 import { scrollFadeUpProps, staggerContainer, fadeUp } from "@/lib/motion";
 
@@ -115,9 +116,10 @@ export default function Ventures() {
                 href={venture.url}
                 target="_blank"
                 rel="noopener noreferrer"
-                className={`text-xs uppercase tracking-widest text-clay hover:text-ink transition-colors text-center mt-1.5 mb-10 md:mb-0 md:row-start-5 ${COL_START[i]}`}
+                className={`inline-flex items-center justify-center gap-1 text-xs uppercase tracking-widest text-clay hover:text-ink transition-colors text-center mt-1.5 mb-10 md:mb-0 md:row-start-5 ${COL_START[i]}`}
               >
-                Visit ↗
+                Visit
+                <ArrowUpRight className="w-3.5 h-3.5" />
               </motion.a>
             )}
           </Fragment>
