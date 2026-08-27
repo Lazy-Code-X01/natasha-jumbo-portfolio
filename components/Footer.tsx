@@ -9,7 +9,7 @@ export default function Footer() {
         <span>
           {nav.logo} © {year}
         </span>
-        <span>Placeholder footer copy — TODO</span>
+        <span>All rights reserved.</span>
       </div>
     </footer>
   );

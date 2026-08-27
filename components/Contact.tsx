@@ -44,15 +44,20 @@ export default function Contact() {
           variants={fadeUp}
           className="mt-12 flex flex-wrap items-center justify-center gap-x-6 gap-y-3"
         >
-          {contact.socials.map((social) => (
-            <a
-              key={social.label}
-              href={social.href}
-              className="text-sm uppercase tracking-widest text-ink-soft hover:text-clay transition-colors"
-            >
-              {social.label}
-            </a>
-          ))}
+          {contact.socials.map((social) => {
+            const isExternal = !social.href.startsWith("mailto:");
+            return (
+              <a
+                key={social.label}
+                href={social.href}
+                target={isExternal ? "_blank" : undefined}
+                rel={isExternal ? "noopener noreferrer" : undefined}
+                className="text-sm uppercase tracking-widest text-ink-soft hover:text-clay transition-colors"
+              >
+                {social.label}
+              </a>
+            );
+          })}
         </motion.div>
       </motion.div>
     </section>

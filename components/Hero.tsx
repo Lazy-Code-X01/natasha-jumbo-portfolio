@@ -65,25 +65,26 @@ function SwirlMark() {
 function SquiggleArrow() {
   return (
     <svg
-      viewBox="0 0 100 90"
-      className="w-14 text-clay"
+      viewBox="0 0 50 40"
+      className="w-[50px] h-[40px] text-clay"
       fill="none"
       aria-hidden="true"
     >
-      {/* short entry tick */}
-      <path d="M32,8 L24,26" stroke="currentColor" strokeWidth="3" strokeLinecap="round" />
-      {/* single crossing loop */}
+      {/* starts flush with the portrait's edge, curves down to the badge's left edge */}
       <path
-        d="M24,26 C8,34 14,58 34,56 C50,54 52,34 34,32 C20,30 18,44 30,48"
+        d="M0,5 C10,25 28,32 44,28"
         stroke="currentColor"
-        strokeWidth="3"
+        strokeWidth="2"
+        strokeLinecap="round"
+      />
+      {/* arrowhead attached directly to the curve's endpoint, touching the badge's edge */}
+      <path
+        d="M32,20 L44,28 L35,37"
+        stroke="currentColor"
+        strokeWidth="2"
         strokeLinecap="round"
         strokeLinejoin="round"
       />
-      {/* tail sweeping out to the arrowhead */}
-      <path d="M30,48 C44,60 65,58 78,66" stroke="currentColor" strokeWidth="3" strokeLinecap="round" />
-      {/* solid filled arrowhead */}
-      <path d="M91,71 L75,74 L81,58 Z" fill="currentColor" />
     </svg>
   );
 }
@@ -237,10 +238,13 @@ export default function Hero() {
               </span>
               {contact.socials.map((social) => {
                 const Icon = socialIcons[social.label];
+                const isExternal = !social.href.startsWith("mailto:");
                 return (
                   <a
                     key={social.label}
                     href={social.href}
+                    target={isExternal ? "_blank" : undefined}
+                    rel={isExternal ? "noopener noreferrer" : undefined}
                     aria-label={social.label}
                     className="w-8 h-8 rounded-full bg-clay/90 flex items-center justify-center hover:bg-sage transition-colors"
                   >
@@ -266,15 +270,23 @@ export default function Hero() {
           <DiamondMark />
         </motion.div>
 
-        {/* squiggle arrow + stat badge */}
+        {/* stat badge */}
         <motion.div
           variants={fadeUp}
-          className="flex flex-col items-center md:items-start md:absolute md:right-0 md:top-28 md:w-40"
+          className="md:absolute md:right-0 md:top-28 md:w-40"
         >
-          <div className="hidden md:block md:-ml-3 md:-mb-1">
-            <SquiggleArrow />
-          </div>
           <StatBlobBadge />
+        </motion.div>
+
+        {/* squiggle arrow — bridges the gap from the portrait's edge to the
+            badge; positioned from real measured coordinates (see PR notes),
+            not nested inside the badge's own box, so it can actually span
+            the two rather than floating in a small box near the badge. */}
+        <motion.div
+          variants={fadeUp}
+          className="hidden md:block md:absolute md:left-[564px] md:top-[100px]"
+        >
+          <SquiggleArrow />
         </motion.div>
       </motion.div>
     </section>

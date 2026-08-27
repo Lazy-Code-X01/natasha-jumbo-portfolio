@@ -1,6 +1,7 @@
 import Nav from "@/components/Nav";
 import Hero from "@/components/Hero";
 import Intro from "@/components/Intro";
+import Ventures from "@/components/Ventures";
 import Work from "@/components/Work";
 import OnStage from "@/components/OnStage";
 import Philosophy from "@/components/Philosophy";
@@ -14,6 +15,7 @@ export default function Home() {
       <main>
         <Hero />
         <Intro />
+        <Ventures />
         <Work />
         <OnStage />
         <Philosophy />

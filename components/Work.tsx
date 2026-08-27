@@ -2,9 +2,36 @@
 
 import { motion } from "framer-motion";
 import Image from "next/image";
-import { Plus } from "lucide-react";
+import { Plus, ArrowUpRight } from "lucide-react";
 import { workProjects, stats } from "@/lib/content";
 import { scrollFadeUpProps, staggerContainer, fadeUp } from "@/lib/motion";
+
+// Double-stroke emphasis mark — Work's own decorative signature, distinct
+// from Hero's single wavy brushstroke underline.
+function EmphasisMark() {
+  return (
+    <svg
+      viewBox="0 0 140 24"
+      className="w-28 md:w-36 text-clay mt-4"
+      fill="none"
+      aria-hidden="true"
+    >
+      <path
+        d="M2 10C30 4 70 4 138 8"
+        stroke="currentColor"
+        strokeWidth="3"
+        strokeLinecap="round"
+      />
+      <path
+        d="M2 18C30 14 70 15 138 17"
+        stroke="currentColor"
+        strokeWidth="3"
+        strokeLinecap="round"
+        opacity="0.5"
+      />
+    </svg>
+  );
+}
 
 export default function Work() {
   return (
@@ -19,6 +46,7 @@ export default function Work() {
         <h2 className="font-display text-3xl md:text-5xl mt-3">
           Building brands with <span className="italic font-light">intent</span>
         </h2>
+        <EmphasisMark />
       </motion.div>
 
       <motion.div
@@ -28,9 +56,20 @@ export default function Work() {
         variants={staggerContainer(0.12)}
         className="grid md:grid-cols-2 gap-6 md:gap-8"
       >
-        {workProjects.map((project, i) => (
-          <motion.article
+        {workProjects.map((project, i) => {
+          const Wrapper = project.url ? motion.a : motion.article;
+          const linkProps = project.url
+            ? {
+                href: project.url,
+                target: "_blank",
+                rel: "noopener noreferrer",
+              }
+            : {};
+
+          return (
+          <Wrapper
             key={project.title}
+            {...linkProps}
             variants={fadeUp}
             whileHover={project.isPlaceholder ? undefined : { y: -4 }}
             transition={{ type: "spring", stiffness: 300, damping: 25 }}
@@ -40,7 +79,13 @@ export default function Work() {
                 : "border border-line bg-canvas-deep/60 hover:border-clay/50 hover:shadow-lg transition-[border-color,box-shadow]"
             }`}
           >
-            <div className="relative aspect-[4/3] w-full overflow-hidden">
+            <div
+              className={`relative aspect-[4/3] w-full overflow-hidden ${
+                !project.isPlaceholder && project.imageFit === "contain"
+                  ? "bg-canvas-deep/40"
+                  : ""
+              }`}
+            >
               {project.isPlaceholder ? (
                 <div className="absolute inset-2 border border-dashed border-line rounded-sm flex flex-col items-center justify-center gap-2 text-ink-soft/60">
                   <Plus className="w-6 h-6" />
@@ -49,14 +94,24 @@ export default function Work() {
                   </span>
                 </div>
               ) : (
-                project.imageUrl && (
+                project.imageUrl &&
+                (project.imageFit === "contain" ? (
+                  <div className="absolute inset-6 md:inset-8 transition-transform duration-500 group-hover:scale-105">
+                    <Image
+                      src={project.imageUrl}
+                      alt={`${project.title} logo`}
+                      fill
+                      className="object-contain"
+                    />
+                  </div>
+                ) : (
                   <Image
                     src={project.imageUrl}
-                    alt={`${project.title} — placeholder visual`}
+                    alt={project.title}
                     fill
                     className="object-cover transition-transform duration-500 group-hover:scale-105"
                   />
-                )
+                ))
               )}
 
               <span
@@ -77,16 +132,19 @@ export default function Work() {
             </div>
 
             <div className="p-6 md:p-8 flex flex-col gap-3">
-              <div className="flex items-center justify-between">
+              <div className="flex items-start justify-between gap-3">
                 <h3
-                  className={`font-display text-2xl md:text-3xl ${
+                  className={`font-display text-2xl md:text-3xl flex items-center gap-1.5 ${
                     project.isPlaceholder ? "text-ink-soft" : "text-ink"
                   }`}
                 >
                   {project.title}
+                  {project.url && (
+                    <ArrowUpRight className="w-4 h-4 text-ink-soft group-hover:text-clay transition-colors shrink-0" />
+                  )}
                 </h3>
                 {!project.isPlaceholder && project.year && (
-                  <span className="text-xs uppercase tracking-widest text-ink-soft">
+                  <span className="text-xs uppercase tracking-widest text-ink-soft shrink-0 mt-1.5">
                     {project.year}
                   </span>
                 )}
@@ -99,8 +157,9 @@ export default function Work() {
                 {project.description}
               </p>
             </div>
-          </motion.article>
-        ))}
+          </Wrapper>
+          );
+        })}
       </motion.div>
 
       <motion.div

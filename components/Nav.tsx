@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { ArrowUpRight, Menu, X } from "lucide-react";
+import { Menu, X } from "lucide-react";
 import { nav } from "@/lib/content";
 
 export default function Nav() {
@@ -49,10 +49,9 @@ export default function Nav() {
 
           <a
             href={nav.cta.href}
-            className="hidden md:inline-flex items-center gap-1.5 rounded-full bg-clay text-canvas text-sm uppercase tracking-widest px-4 md:px-5 py-2.5 hover:bg-ink transition-colors shrink-0"
+            className="hidden md:inline-flex items-center rounded-full bg-clay text-canvas text-sm uppercase tracking-widest px-4 md:px-5 py-2.5 hover:bg-ink transition-colors shrink-0"
           >
             {nav.cta.label}
-            <ArrowUpRight className="w-4 h-4" />
           </a>
 
           <button
@@ -89,10 +88,9 @@ export default function Nav() {
                 <a
                   href={nav.cta.href}
                   onClick={() => setOpen(false)}
-                  className="inline-flex items-center gap-1.5 justify-center rounded-full bg-clay text-canvas text-sm uppercase tracking-widest px-5 py-3"
+                  className="inline-flex items-center justify-center rounded-full bg-clay text-canvas text-sm uppercase tracking-widest px-5 py-3"
                 >
                   {nav.cta.label}
-                  <ArrowUpRight className="w-4 h-4" />
                 </a>
               </div>
             </motion.nav>
