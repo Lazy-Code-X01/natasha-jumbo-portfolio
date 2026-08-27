@@ -64,6 +64,9 @@ export default function Work() {
               }
             : {};
 
+          const isDanglingLast =
+            workProjects.length % 2 !== 0 && i === workProjects.length - 1;
+
           return (
           <Wrapper
             key={project.title}
@@ -72,6 +75,8 @@ export default function Work() {
             whileHover={project.isPlaceholder ? undefined : { y: -4 }}
             transition={{ type: "spring", stiffness: 300, damping: 25 }}
             className={`group overflow-hidden rounded-sm flex flex-col ${
+              isDanglingLast ? "md:col-span-2" : ""
+            } ${
               project.isPlaceholder
                 ? "border border-dashed border-line bg-transparent"
                 : "border border-line bg-canvas hover:border-clay/50 hover:shadow-lg transition-[border-color,box-shadow]"

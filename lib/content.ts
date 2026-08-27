@@ -89,13 +89,13 @@ export const heroTestimonial: Testimonial = {
 
 // PSHAN removed (2026-08-24) — she never actually worked with them, that
 // entry was a stale seed from Phase 1 scaffolding. Replaced with Kingres
-// Properties, also from her CV. All 4 entries below are now real, CV-backed
-// roles with real client logos (2026-08-26) — none are transparent PNGs
-// except NJ Creative Firm's, and Kingres's is a wide 2.1:1 wordmark, so all
-// four use imageFit: "contain" rather than the cropping "cover" default.
-// Sip and Paint.NG (COO) is the one remaining unused CV candidate — good
-// option if she wants a 5th card later. To add a project, push another
-// { tag, title, description, year? } object; no component changes needed.
+// Properties, also from her CV. All 5 entries now have real client logos
+// (Sip and Paint.NG's added 2026-08-27, a near-square transparent circular
+// badge) — all use imageFit: "contain" rather than the cropping "cover"
+// default. To add another project, push another
+// { tag, title, description, year? } object; no component changes needed —
+// Work.tsx already handles an odd-numbered last card by letting it span
+// both columns.
 export const workProjects: WorkProject[] = [
   {
     tag: "Real Estate & Growth",
@@ -104,7 +104,7 @@ export const workProjects: WorkProject[] = [
       "As Senior Brand Manager, drove brand strategy and short-let marketing campaigns achieving 50% revenue growth, while managing 800+ agents across Nigeria.",
     // Role ended in 2026 — no longer current, per user (2026-08-27).
     year: "2024–2026",
-    imageUrl: "/images/logo-kingres.jpeg",
+    imageUrl: "/images/logo-kingres.png",
     imageFit: "contain",
     url: "https://www.kingresproperties.com",
   },
@@ -137,6 +137,16 @@ export const workProjects: WorkProject[] = [
     imageUrl: "/images/logo-bluedutch.png",
     imageFit: "contain",
     url: "https://bluedutchproperty.com",
+  },
+  {
+    tag: "Lifestyle & Brand",
+    title: "Sip and Paint.NG",
+    description:
+      "As Chief Operating Officer, leads both creative and operational departments, directing digital marketing, partnerships, and creative activations that grew bookings and brand recognition nationwide.",
+    year: "2025–Present",
+    imageUrl: "/images/logo-sipandpaint.png",
+    imageFit: "contain",
+    url: "https://sipandpaint.ng",
   },
 ];
 
