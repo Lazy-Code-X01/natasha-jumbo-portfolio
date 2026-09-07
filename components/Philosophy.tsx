@@ -14,7 +14,7 @@ export default function Philosophy() {
         <p className="font-quote italic text-2xl md:text-4xl leading-relaxed text-balance">
           &ldquo;{philosophy.quote}&rdquo;
         </p>
-        <p className="mt-8 text-sm uppercase tracking-widest text-canvas/60">
+        <p className="mt-8 text-sm uppercase tracking-widest font-mono text-canvas/60">
           {philosophy.attribution}
         </p>
       </motion.div>

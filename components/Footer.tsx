@@ -11,7 +11,7 @@ export default function Footer() {
     <footer className="bg-canvas-deep border-t border-line px-6 md:px-10 py-8">
       <motion.div
         {...scrollFadeUpProps}
-        className="max-w-content mx-auto flex flex-col md:flex-row items-center justify-between gap-4 text-xs uppercase tracking-widest text-ink-soft"
+        className="max-w-content mx-auto flex flex-col md:flex-row items-center justify-between gap-4 text-xs uppercase tracking-widest font-mono text-ink-soft"
       >
         <span>
           {nav.logo} © {year}

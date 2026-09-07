@@ -3,6 +3,7 @@ import Hero from "@/components/Hero";
 import Intro from "@/components/Intro";
 import Ventures from "@/components/Ventures";
 import Work from "@/components/Work";
+import Testimonials from "@/components/Testimonials";
 import OnStage from "@/components/OnStage";
 import Philosophy from "@/components/Philosophy";
 import Contact from "@/components/Contact";
@@ -18,6 +19,7 @@ export default function Home() {
         <Ventures />
         <Work />
         <OnStage />
+        <Testimonials />
         <Philosophy />
         <Contact />
       </main>

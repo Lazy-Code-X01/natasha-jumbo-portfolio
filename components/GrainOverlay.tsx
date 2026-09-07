@@ -9,7 +9,7 @@ export default function GrainOverlay() {
           stitchTiles="stitch"
           result="noise"
         />
-        <feColorMatrix in="noise" type="matrix" values="0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 0.9 0" />
+        <feColorMatrix in="noise" type="matrix" values="0 0 0 0 1  0 0 0 0 1  0 0 0 0 1  0 0 0 0.9 0" />
       </filter>
       <rect width="100%" height="100%" filter="url(#grain-texture)" />
     </svg>

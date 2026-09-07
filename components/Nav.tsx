@@ -60,7 +60,7 @@ export default function Nav() {
                 <a
                   href={link.href}
                   onClick={(e) => handleNavClick(e, link.href)}
-                  className="uppercase tracking-widest text-ink-soft hover:text-clay transition-colors"
+                  className="uppercase tracking-widest font-mono text-ink-soft hover:text-clay transition-colors"
                 >
                   {link.label}
                 </a>
@@ -76,7 +76,7 @@ export default function Nav() {
           <a
             href={nav.cta.href}
             onClick={(e) => handleNavClick(e, nav.cta.href)}
-            className="hidden md:inline-flex items-center rounded-full bg-clay text-canvas text-sm uppercase tracking-widest px-4 md:px-5 py-2.5 hover:bg-ink transition-colors shrink-0"
+            className="hidden md:inline-flex items-center rounded-full bg-clay text-canvas text-sm uppercase tracking-widest font-mono px-4 md:px-5 py-2.5 hover:bg-ink transition-colors shrink-0"
           >
             {nav.cta.label}
           </a>
@@ -107,7 +107,7 @@ export default function Nav() {
                     key={link.href}
                     href={link.href}
                     onClick={(e) => handleNavClick(e, link.href)}
-                    className="text-sm uppercase tracking-widest text-ink-soft hover:text-clay transition-colors"
+                    className="text-sm uppercase tracking-widest font-mono text-ink-soft hover:text-clay transition-colors"
                   >
                     {link.label}
                   </a>
@@ -115,7 +115,7 @@ export default function Nav() {
                 <a
                   href={nav.cta.href}
                   onClick={(e) => handleNavClick(e, nav.cta.href)}
-                  className="inline-flex items-center justify-center rounded-full bg-clay text-canvas text-sm uppercase tracking-widest px-5 py-3"
+                  className="inline-flex items-center justify-center rounded-full bg-clay text-canvas text-sm uppercase tracking-widest font-mono px-5 py-3"
                 >
                   {nav.cta.label}
                 </a>

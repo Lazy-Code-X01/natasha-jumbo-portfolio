@@ -22,7 +22,7 @@ export default function Ventures() {
   return (
     <section className="px-6 md:px-10 py-16 md:py-20 max-w-content mx-auto">
       <motion.div {...scrollFadeUpProps} className="mb-10 md:mb-14 max-w-2xl">
-        <span className="text-sm uppercase tracking-widest text-ink-soft">
+        <span className="text-sm uppercase tracking-widest font-mono text-ink-soft">
           Ventures
         </span>
         <h2 className="font-display text-2xl md:text-3xl mt-3">
@@ -51,11 +51,14 @@ export default function Ventures() {
               variants={fadeUp}
               className={`group relative flex justify-center md:row-start-1 ${COL_START[i]}`}
             >
-              <div className="relative z-10 bg-canvas p-1.5 rounded-full">
+              {/* bg-chip (not theme tokens) — the same fixed light backing
+                  used behind Work's logo tiles, since these marks are real
+                  client artwork designed for a white background. */}
+              <div className="relative z-10 bg-chip p-1.5 rounded-full">
                 <motion.div
                   whileHover={{ scale: 1.06 }}
                   transition={{ type: "spring", stiffness: 300, damping: 25 }}
-                  className="relative w-24 h-24 md:w-28 md:h-28 rounded-full overflow-hidden border-2 border-clay/30 group-hover:border-clay transition-colors bg-canvas-deep/40"
+                  className="relative w-24 h-24 md:w-28 md:h-28 rounded-full overflow-hidden border-2 border-clay/30 group-hover:border-clay transition-colors bg-chip"
                 >
                   {venture.imageUrl &&
                     (venture.imageFit === "cover" ? (
@@ -90,7 +93,7 @@ export default function Ventures() {
             {/* row 3: role */}
             <motion.span
               variants={fadeUp}
-              className={`text-xs uppercase tracking-widest text-sage text-center mt-1.5 md:row-start-3 ${COL_START[i]}`}
+              className={`text-xs uppercase tracking-widest font-mono text-sage text-center mt-1.5 md:row-start-3 ${COL_START[i]}`}
             >
               {venture.role}
             </motion.span>
@@ -116,7 +119,7 @@ export default function Ventures() {
                 href={venture.url}
                 target="_blank"
                 rel="noopener noreferrer"
-                className={`inline-flex items-center justify-center gap-1 text-xs uppercase tracking-widest text-clay hover:text-ink transition-colors text-center mt-1.5 mb-10 md:mb-0 md:row-start-5 ${COL_START[i]}`}
+                className={`inline-flex items-center justify-center gap-1 text-xs uppercase tracking-widest font-mono text-clay hover:text-ink transition-colors text-center mt-1.5 mb-10 md:mb-0 md:row-start-5 ${COL_START[i]}`}
               >
                 Visit
                 <ArrowUpRight className="w-3.5 h-3.5" />

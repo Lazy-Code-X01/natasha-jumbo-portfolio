@@ -38,7 +38,7 @@ export default function Work() {
     <section id="work" className="bg-canvas-deep px-6 md:px-10 py-20 md:py-28">
       <div className="max-w-content mx-auto">
       <motion.div {...scrollFadeUpProps} className="mb-12 md:mb-16 max-w-2xl">
-        <span className="text-sm uppercase tracking-widest text-ink-soft">
+        <span className="text-sm uppercase tracking-widest font-mono text-ink-soft">
           Selected work
         </span>
         <h2 className="font-display text-3xl md:text-5xl mt-3">
@@ -85,14 +85,14 @@ export default function Work() {
             <div
               className={`relative aspect-[4/3] w-full overflow-hidden ${
                 !project.isPlaceholder && project.imageFit === "contain"
-                  ? "bg-canvas-deep/20"
+                  ? "bg-chip"
                   : ""
               }`}
             >
               {project.isPlaceholder ? (
                 <div className="absolute inset-2 border border-dashed border-line rounded-sm flex flex-col items-center justify-center gap-2 text-ink-soft/60">
                   <Plus className="w-6 h-6" />
-                  <span className="text-xs uppercase tracking-widest">
+                  <span className="text-xs uppercase tracking-widest font-mono">
                     Open slot
                   </span>
                 </div>
@@ -117,18 +117,22 @@ export default function Work() {
                 ))
               )}
 
+              {/* Fixed dark badge (not theme tokens) — always sits over the
+                  light chip tile for "contain" logos, and needs to stay
+                  legible over an arbitrary photo for any future "cover"
+                  card, regardless of overall site theme. */}
               <span
-                className={`absolute top-4 left-4 flex items-center justify-center w-9 h-9 rounded-full font-display text-sm ${
+                className={`absolute top-4 left-4 flex items-center justify-center w-9 h-9 rounded-full font-mono text-sm ${
                   project.isPlaceholder
                     ? "border border-dashed border-line text-ink-soft/70"
-                    : "bg-ink/70 text-canvas"
+                    : "bg-black/70 text-[#f2f1ea]"
                 }`}
               >
                 {String(i + 1).padStart(2, "0")}
               </span>
 
               {!project.isPlaceholder && (
-                <span className="absolute top-4 right-4 text-xs uppercase tracking-widest text-ink bg-canvas/90 border border-line rounded-full px-3 py-1">
+                <span className="absolute top-4 right-4 text-xs uppercase tracking-widest font-mono text-ink bg-canvas/90 border border-line rounded-full px-3 py-1">
                   {project.tag}
                 </span>
               )}
@@ -147,7 +151,7 @@ export default function Work() {
                   )}
                 </h3>
                 {!project.isPlaceholder && project.year && (
-                  <span className="text-xs uppercase tracking-widest text-ink-soft shrink-0 mt-1.5">
+                  <span className="text-xs uppercase tracking-widest font-mono text-ink-soft shrink-0 mt-1.5">
                     {project.year}
                   </span>
                 )}

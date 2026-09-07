@@ -81,11 +81,17 @@ export const hero: HeroContent = {
   imageUrl: "/images/natasha-hero.jpg",
 };
 
-export const heroTestimonial: Testimonial = {
-  quote:
-    "Working with Natasha is so easy! A true master and professional brand strategist with a great sense of design and clarity.",
-  attribution: "CEO, caveDwellerz",
-};
+// Moved out of Hero into its own dedicated section (2026-09-06, per
+// Natasha's feedback) — same real quote, just given more room. Push
+// another { quote, attribution } object here for more; Testimonials.tsx
+// already handles 1 vs. multiple (single centers, 2+ goes to a grid).
+export const testimonials: Testimonial[] = [
+  {
+    quote:
+      "Working with Natasha is so easy! A true master and professional brand strategist with a great sense of design and clarity.",
+    attribution: "CEO, caveDwellerz",
+  },
+];
 
 // PSHAN removed (2026-08-24) — she never actually worked with them, that
 // entry was a stale seed from Phase 1 scaffolding. Replaced with Kingres
@@ -132,7 +138,7 @@ export const workProjects: WorkProject[] = [
     tag: "Real Estate & Brand",
     title: "BlueDutch",
     description:
-      "As Head of Brand (Real Estate), directed creative and PR strategy for BlueDutch's property portfolio alongside Lerry Blue PR, strengthening investor confidence locally and internationally.",
+      "As Senior Brand Manager, directed creative and PR strategy for BlueDutch's property portfolio alongside Lerry Blue PR, strengthening investor confidence locally and internationally.",
     year: "2024–2025",
     imageUrl: "/images/logo-bluedutch.png",
     imageFit: "contain",
@@ -142,7 +148,7 @@ export const workProjects: WorkProject[] = [
     tag: "Lifestyle & Brand",
     title: "Sip and Paint.NG",
     description:
-      "As Chief Operating Officer, leads both creative and operational departments, directing digital marketing, partnerships, and creative activations that grew bookings and brand recognition nationwide.",
+      "As Creative Director, leads both creative and operational departments, directing digital marketing, partnerships, and creative activations that grew bookings and brand recognition nationwide.",
     year: "2025–Present",
     imageUrl: "/images/logo-sipandpaint.png",
     imageFit: "contain",
@@ -154,7 +160,7 @@ export const workProjects: WorkProject[] = [
 // gives a specific headcount nowhere, but does state brand presence expanded
 // across 28+ Nigerian states as a headline career stat.
 export const stats: Stat[] = [
-  { number: "10", label: "Years in practice" },
+  { number: "10+", label: "Years in practice" },
   { number: "15+", label: "Brands built" },
   { number: "5", label: "Awards" },
   { number: "28+", label: "States reached" },
@@ -230,7 +236,7 @@ export const ventures: Venture[] = [
   },
   {
     name: "CJI College",
-    role: "Founder",
+    role: "Co-Founder",
     description:
       "A charity school providing free, quality education to children in need.",
     imageUrl: "/images/cji-college.jpg",
@@ -243,10 +249,11 @@ export const ventures: Venture[] = [
       "A digital ecosystem connecting founders, professionals, mentors, and service providers, currently in development.",
     imageUrl: "/placeholders/sabiq-placeholder.svg",
     imageFit: "cover",
+    url: "https://Sabiq-inc.vercel.app",
   },
   {
     name: "caveDwellerz",
-    role: "Director",
+    role: "Creative Director",
     description:
       "A global creative fellowship preserving culture through authentic expression.",
     imageUrl: "/images/logo-cavedwellerz.png",
@@ -267,12 +274,14 @@ export const contact = {
     },
     { label: "Substack", href: "https://substack.com/@natashajumbo?invite" },
     { label: "Behance", href: "https://www.behance.net/natasha-jumbo" },
+    // wa.me link built from the number she gave (2026-09-07): +234 817 916 8398.
+    { label: "WhatsApp", href: "https://wa.me/2348179168398" },
     { label: "Email", href: "mailto:natashaifeomajumbo@gmail.com" },
   ],
 };
 
 export const nav = {
-  logo: "N. Jumbo",
+  logo: "Natasha.J",
   links: [
     { label: "Work", href: "#work" },
     { label: "On Stage", href: "#on-stage" },

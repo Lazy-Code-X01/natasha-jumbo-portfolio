@@ -32,7 +32,7 @@ export default function OnStage() {
       className="px-6 md:px-10 py-20 md:py-28 max-w-content mx-auto"
     >
       <motion.div {...scrollFadeUpProps} className="mb-10 md:mb-12 max-w-2xl">
-        <span className="text-sm uppercase tracking-widest text-ink-soft">
+        <span className="text-sm uppercase tracking-widest font-mono text-ink-soft">
           On stage
         </span>
         <h2 className="font-display text-3xl md:text-4xl mt-3">
@@ -74,7 +74,7 @@ export default function OnStage() {
                   {highlight.isPlaceholder ? (
                     <div className="absolute inset-0 border border-dashed border-line flex flex-col items-center justify-center gap-2 text-ink-soft/60 bg-canvas-deep/30">
                       <Mic className="w-6 h-6" />
-                      <span className="text-xs uppercase tracking-widest">
+                      <span className="text-xs uppercase tracking-widest font-mono">
                         Coming soon
                       </span>
                     </div>

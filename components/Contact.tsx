@@ -19,7 +19,7 @@ export default function Contact() {
       >
         <motion.span
           variants={fadeUp}
-          className="text-sm uppercase tracking-widest text-ink-soft"
+          className="text-sm uppercase tracking-widest font-mono text-ink-soft"
         >
           Get in touch
         </motion.span>
@@ -34,7 +34,7 @@ export default function Contact() {
         <motion.div variants={fadeUp} className="mt-10">
           <a
             href={contact.ctaHref}
-            className="inline-flex items-center justify-center px-8 py-4 bg-clay text-canvas text-sm uppercase tracking-widest rounded-sm hover:bg-ink transition-colors"
+            className="inline-flex items-center justify-center px-8 py-4 bg-clay text-canvas text-sm uppercase tracking-widest font-mono rounded-sm hover:bg-ink transition-colors"
           >
             {contact.ctaLabel}
           </a>
@@ -52,7 +52,7 @@ export default function Contact() {
                 href={social.href}
                 target={isExternal ? "_blank" : undefined}
                 rel={isExternal ? "noopener noreferrer" : undefined}
-                className="text-sm uppercase tracking-widest text-ink-soft hover:text-clay transition-colors"
+                className="text-sm uppercase tracking-widest font-mono text-ink-soft hover:text-clay transition-colors"
               >
                 {social.label}
               </a>

@@ -12,7 +12,7 @@ export default function Intro() {
           {...scrollFadeUpProps}
           className="mb-12 md:mb-16 max-w-2xl"
         >
-          <span className="text-sm uppercase tracking-widest text-ink-soft">
+          <span className="text-sm uppercase tracking-widest font-mono text-ink-soft">
             Identity
           </span>
           <h2 className="font-display text-3xl md:text-5xl mt-3">

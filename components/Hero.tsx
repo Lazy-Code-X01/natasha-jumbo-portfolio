@@ -3,10 +3,10 @@
 import { motion } from "framer-motion";
 import Image from "next/image";
 import type { ComponentType } from "react";
-import { Mail, Quote } from "lucide-react";
-import { FaInstagram, FaLinkedin, FaBehance } from "react-icons/fa";
+import { Mail } from "lucide-react";
+import { FaInstagram, FaLinkedin, FaBehance, FaWhatsapp } from "react-icons/fa";
 import { SiSubstack } from "react-icons/si";
-import { hero, heroTestimonial, stats, contact } from "@/lib/content";
+import { hero, stats, contact } from "@/lib/content";
 import { fadeUp, staggerContainer } from "@/lib/motion";
 
 // lucide-react dropped brand/logo icons — brand marks come from react-icons,
@@ -16,6 +16,7 @@ const socialIcons: Record<string, ComponentType<{ className?: string }>> = {
   LinkedIn: FaLinkedin,
   Substack: SiSubstack,
   Behance: FaBehance,
+  WhatsApp: FaWhatsapp,
   Email: Mail,
 };
 
@@ -32,31 +33,6 @@ function Brushstroke() {
         stroke="currentColor"
         strokeWidth="6"
         strokeLinecap="round"
-      />
-    </svg>
-  );
-}
-
-function SwirlMark() {
-  return (
-    <svg
-      viewBox="0 0 60 40"
-      className="w-10 h-7 text-clay"
-      fill="none"
-      aria-hidden="true"
-    >
-      <path
-        d="M2 34C14 34 14 6 26 6"
-        stroke="currentColor"
-        strokeWidth="4"
-        strokeLinecap="round"
-      />
-      <path
-        d="M12 38C24 38 24 10 36 10"
-        stroke="currentColor"
-        strokeWidth="4"
-        strokeLinecap="round"
-        opacity="0.6"
       />
     </svg>
   );
@@ -120,13 +96,13 @@ function StatBlobBadge() {
       >
         <path
           d="M42,18 C74,2 132,4 162,26 C192,48 194,88 172,118 C150,148 96,158 62,144 C28,130 4,98 8,68 C12,40 22,32 42,18 Z"
-          fill="#f2f1ea"
+          fill="#000000"
           stroke="currentColor"
           strokeWidth="2.5"
         />
       </svg>
       <div className="relative z-10 h-full flex flex-col items-center justify-center text-center px-5">
-        <span className="text-[10px] uppercase tracking-widest text-ink-soft">
+        <span className="text-[10px] uppercase tracking-widest font-mono text-ink-soft">
           {stat.label}
         </span>
         <span className="font-display text-2xl md:text-3xl text-clay mt-1">
@@ -177,7 +153,7 @@ export default function Hero() {
         <motion.div variants={fadeUp} className="mt-6">
           <a
             href="#work"
-            className="inline-flex items-center gap-2 text-sm uppercase tracking-widest text-ink border-b border-ink pb-1 hover:text-clay hover:border-clay transition-colors"
+            className="inline-flex items-center gap-2 text-sm uppercase tracking-widest font-mono text-ink border-b border-ink pb-1 hover:text-clay hover:border-clay transition-colors"
           >
             View the work
           </a>
@@ -190,23 +166,6 @@ export default function Hero() {
         variants={staggerContainer(0.12)}
         className="relative mt-8 md:mt-12 mx-auto max-w-3xl flex flex-col items-center gap-6 md:gap-0 md:h-[400px]"
       >
-        {/* testimonial callout */}
-        <motion.div
-          variants={fadeUp}
-          className="md:absolute md:-left-2 md:top-10 md:w-44 text-left"
-        >
-          <SwirlMark />
-          <div className="mt-2 flex items-start gap-2">
-            <Quote className="w-4 h-4 text-clay shrink-0 mt-1" />
-            <p className="font-quote italic text-ink-soft text-sm leading-relaxed">
-              {heroTestimonial.quote}
-            </p>
-          </div>
-          <p className="mt-2 text-xs uppercase tracking-widest text-ink-soft">
-            {heroTestimonial.attribution}
-          </p>
-        </motion.div>
-
         {/* portrait */}
         <motion.div
           variants={fadeUp}

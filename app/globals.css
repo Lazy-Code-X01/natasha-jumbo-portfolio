@@ -3,12 +3,12 @@
 @tailwind utilities;
 
 :root {
-  --canvas: #f2f1ea;
-  --ink: #111512;
+  --canvas: #000000;
+  --ink: #f2f1ea;
 }
 
 * {
-  border-color: rgba(17, 21, 18, 0.14);
+  border-color: rgba(242, 241, 234, 0.14);
 }
 
 html {
@@ -21,14 +21,16 @@ body {
   font-family: var(--font-jost), sans-serif;
 }
 
-/* Paper grain overlay — fixed, full-viewport, non-interactive */
+/* Paper grain overlay — fixed, full-viewport, non-interactive. White noise
+   + screen blend (not black + multiply) since multiply-black is invisible
+   against the dark theme's near-black canvas. */
 .grain-overlay {
   position: fixed;
   inset: 0;
   z-index: 60;
   pointer-events: none;
-  opacity: 0.05;
-  mix-blend-mode: multiply;
+  opacity: 0.06;
+  mix-blend-mode: screen;
 }
 
 @layer utilities {

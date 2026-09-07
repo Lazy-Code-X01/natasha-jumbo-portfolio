@@ -1,5 +1,10 @@
 import type { Metadata } from "next";
-import { Fraunces, Cormorant_Garamond, Jost } from "next/font/google";
+import {
+  Fraunces,
+  Cormorant_Garamond,
+  Jost,
+  JetBrains_Mono,
+} from "next/font/google";
 import GrainOverlay from "@/components/GrainOverlay";
 import { getBaseUrl } from "@/lib/site";
 import "./globals.css";
@@ -25,6 +30,16 @@ const jost = Jost({
   weight: "variable",
   style: ["normal"],
   variable: "--font-jost",
+  display: "swap",
+});
+
+// Techy accent (2026-09-06) — used only for small uppercase "eyebrow"
+// labels, tags, and nav links, never body copy or headings, so the
+// editorial serif/display voice stays intact.
+const jetbrainsMono = JetBrains_Mono({
+  subsets: ["latin"],
+  weight: ["400", "500"],
+  variable: "--font-jetbrains-mono",
   display: "swap",
 });
 
@@ -72,7 +87,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${fraunces.variable} ${cormorant.variable} ${jost.variable} bg-canvas text-ink antialiased`}
+        className={`${fraunces.variable} ${cormorant.variable} ${jost.variable} ${jetbrainsMono.variable} bg-canvas text-ink antialiased`}
       >
         <GrainOverlay />
         {children}
