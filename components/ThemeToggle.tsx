@@ -15,6 +15,32 @@ export default function ThemeToggle() {
   useEffect(() => {
     const current = document.documentElement.getAttribute("data-theme");
     setTheme(current === "light" ? "light" : "dark");
+
+    // Device-aware by default (2026-09-10): as long as the visitor hasn't
+    // made an explicit choice, keep following the OS/browser color-scheme
+    // live — e.g. their system switching to dark at sunset. The instant
+    // they use the toggle below, the stored choice takes over permanently
+    // and this listener has no effect (it only reads storage once, here).
+    let stored: string | null = null;
+    try {
+      stored = localStorage.getItem(THEME_STORAGE_KEY);
+    } catch {
+      // ignore — treat as "no explicit choice"
+    }
+    if (stored === "light" || stored === "dark") return;
+
+    const mql = window.matchMedia("(prefers-color-scheme: light)");
+    const handleSystemChange = (e: MediaQueryListEvent) => {
+      const next: Theme = e.matches ? "light" : "dark";
+      setTheme(next);
+      if (next === "light") {
+        document.documentElement.setAttribute("data-theme", "light");
+      } else {
+        document.documentElement.removeAttribute("data-theme");
+      }
+    };
+    mql.addEventListener("change", handleSystemChange);
+    return () => mql.removeEventListener("change", handleSystemChange);
   }, []);
 
   const toggle = () => {

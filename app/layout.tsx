@@ -84,11 +84,18 @@ export const metadata: Metadata = {
 // in lib/theme.ts and ThemeToggle.tsx. suppressHydrationWarning on <html> is
 // required since this script sets an attribute the server-rendered markup
 // doesn't have — otherwise React logs a (harmless but noisy) mismatch.
+//
+// Defaults to the visitor's OS/browser color-scheme preference (device-aware,
+// 2026-09-10) rather than always dark — but only until they've explicitly
+// used the toggle, at which point the stored choice always wins.
 const themeInitScript = `
 (function () {
   try {
     var stored = localStorage.getItem("natasha-portfolio-theme");
-    if (stored === "light") {
+    var theme = stored === "light" || stored === "dark"
+      ? stored
+      : (window.matchMedia("(prefers-color-scheme: light)").matches ? "light" : "dark");
+    if (theme === "light") {
       document.documentElement.setAttribute("data-theme", "light");
     }
   } catch (e) {}
