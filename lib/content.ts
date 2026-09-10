@@ -164,6 +164,10 @@ export const stats: Stat[] = [
   { number: "15+", label: "Brands built" },
   { number: "5", label: "Awards" },
   { number: "28+", label: "States reached" },
+  // HR/recruitment work is under an NDA per Natasha (2026-09-10) — she asked
+  // to highlight the number without naming the employer/context, so it's a
+  // standalone stat rather than a Work entry.
+  { number: "1,000+", label: "Candidates recruited" },
 ];
 
 // 3 slots still pending — fill in or push a new entry; no component changes
@@ -178,6 +182,7 @@ export const speakingHighlights: SpeakingHighlight[] = [
     // panelist, so the crop is pulled left rather than the default center
     // to keep her fully in frame.
     imagePosition: "object-left",
+    url: "https://youtu.be/2fZSwyljs1M",
   },
   {
     title: "Presented at InnovateAI Conference",
@@ -257,6 +262,8 @@ export const ventures: Venture[] = [
     description:
       "A global creative fellowship preserving culture through authentic expression.",
     imageUrl: "/images/logo-cavedwellerz.png",
+    // Confirmed directly by Natasha (2026-09-10), share-link token stripped.
+    url: "https://www.instagram.com/cavedwellerz",
   },
 ];
 

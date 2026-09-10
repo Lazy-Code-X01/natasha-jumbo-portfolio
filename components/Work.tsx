@@ -174,16 +174,26 @@ export default function Work() {
         whileInView="visible"
         viewport={{ once: true, amount: 0.3 }}
         variants={staggerContainer(0.1)}
-        className="mt-16 md:mt-20 grid grid-cols-2 md:grid-cols-4 gap-8 border-t border-line pt-10"
+        className="mt-16 md:mt-20 grid grid-cols-2 md:grid-cols-5 gap-8 border-t border-line pt-10"
       >
-        {stats.map((stat) => (
-          <motion.div key={stat.label} variants={fadeUp}>
-            <p className="font-display text-3xl md:text-4xl text-clay">
-              {stat.number}
-            </p>
-            <p className="text-sm text-ink-soft mt-1">{stat.label}</p>
-          </motion.div>
-        ))}
+        {stats.map((stat, i) => {
+          // Odd count on the 2-col mobile grid leaves the last stat alone
+          // on its own row — span it full width there (same fix used for
+          // Work's own odd-numbered last card).
+          const isDanglingLast = stats.length % 2 !== 0 && i === stats.length - 1;
+          return (
+            <motion.div
+              key={stat.label}
+              variants={fadeUp}
+              className={isDanglingLast ? "col-span-2 md:col-span-1" : ""}
+            >
+              <p className="font-display text-3xl md:text-4xl text-clay">
+                {stat.number}
+              </p>
+              <p className="text-sm text-ink-soft mt-1">{stat.label}</p>
+            </motion.div>
+          );
+        })}
       </motion.div>
       </div>
     </section>
