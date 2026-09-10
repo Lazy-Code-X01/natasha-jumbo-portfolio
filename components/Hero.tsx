@@ -94,9 +94,11 @@ function StatBlobBadge() {
         fill="none"
         aria-hidden="true"
       >
+        {/* fill tracks the live --color-canvas var (not a fixed hex) so this
+            still blends into the page background after a theme switch */}
         <path
           d="M42,18 C74,2 132,4 162,26 C192,48 194,88 172,118 C150,148 96,158 62,144 C28,130 4,98 8,68 C12,40 22,32 42,18 Z"
-          fill="#000000"
+          fill="rgb(var(--color-canvas))"
           stroke="currentColor"
           strokeWidth="2.5"
         />

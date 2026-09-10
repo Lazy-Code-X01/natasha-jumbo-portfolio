@@ -4,6 +4,7 @@ import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X } from "lucide-react";
 import { nav } from "@/lib/content";
+import ThemeToggle from "@/components/ThemeToggle";
 
 // Room for the floating nav pill so the destination section's heading
 // doesn't land hidden underneath it.
@@ -73,23 +74,27 @@ export default function Nav() {
             ))}
           </nav>
 
-          <a
-            href={nav.cta.href}
-            onClick={(e) => handleNavClick(e, nav.cta.href)}
-            className="hidden md:inline-flex items-center rounded-full bg-clay text-canvas text-sm uppercase tracking-widest font-mono px-4 md:px-5 py-2.5 hover:bg-ink transition-colors shrink-0"
-          >
-            {nav.cta.label}
-          </a>
+          <div className="flex items-center gap-2 md:gap-3 shrink-0">
+            <ThemeToggle />
 
-          <button
-            type="button"
-            onClick={() => setOpen((v) => !v)}
-            aria-expanded={open}
-            aria-label="Toggle menu"
-            className="md:hidden flex items-center justify-center w-9 h-9"
-          >
-            {open ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
-          </button>
+            <a
+              href={nav.cta.href}
+              onClick={(e) => handleNavClick(e, nav.cta.href)}
+              className="hidden md:inline-flex items-center rounded-full bg-clay text-canvas text-sm uppercase tracking-widest font-mono px-4 md:px-5 py-2.5 hover:bg-ink transition-colors"
+            >
+              {nav.cta.label}
+            </a>
+
+            <button
+              type="button"
+              onClick={() => setOpen((v) => !v)}
+              aria-expanded={open}
+              aria-label="Toggle menu"
+              className="md:hidden flex items-center justify-center w-9 h-9"
+            >
+              {open ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
+            </button>
+          </div>
         </div>
 
         <AnimatePresence>

@@ -2,13 +2,34 @@
 @tailwind components;
 @tailwind utilities;
 
-:root {
-  --canvas: #000000;
-  --ink: #f2f1ea;
+/* Theme tokens as space-separated RGB channels (not hex) so Tailwind's
+   color/<alpha-value> opacity modifiers — bg-canvas/90, border-clay/30,
+   etc. — keep working: see tailwind.config.ts. Dark is the default/root
+   theme (data-theme is only set to "light" explicitly by the toggle); the
+   light block restores the original pre-dark-mode palette (2026-09-03). */
+:root,
+[data-theme="dark"] {
+  --color-canvas: 0 0 0;
+  --color-canvas-deep: 13 13 13;
+  --color-ink: 242 241 234;
+  --color-ink-soft: 158 167 155;
+  --color-clay: 55 151 100;
+  --color-sage: 79 174 122;
+  --color-line: 242 241 234;
+}
+
+[data-theme="light"] {
+  --color-canvas: 242 241 234;
+  --color-canvas-deep: 231 229 218;
+  --color-ink: 17 21 18;
+  --color-ink-soft: 75 82 76;
+  --color-clay: 30 92 61;
+  --color-sage: 63 122 84;
+  --color-line: 17 21 18;
 }
 
 * {
-  border-color: rgba(242, 241, 234, 0.14);
+  border-color: rgb(var(--color-line) / 0.14);
 }
 
 html {
@@ -16,14 +37,16 @@ html {
 }
 
 body {
-  background: var(--canvas);
-  color: var(--ink);
+  background: rgb(var(--color-canvas));
+  color: rgb(var(--color-ink));
   font-family: var(--font-jost), sans-serif;
 }
 
-/* Paper grain overlay — fixed, full-viewport, non-interactive. White noise
-   + screen blend (not black + multiply) since multiply-black is invisible
-   against the dark theme's near-black canvas. */
+/* Paper grain overlay — fixed, full-viewport, non-interactive. The SVG
+   noise itself is white + screen blend, tuned for the dark theme (multiply
+   + black would be invisible on a near-black canvas). Light theme inverts
+   the noise to black and switches back to multiply — the original
+   light-mode-tuned effect — via CSS alone, no component change needed. */
 .grain-overlay {
   position: fixed;
   inset: 0;
@@ -31,6 +54,12 @@ body {
   pointer-events: none;
   opacity: 0.06;
   mix-blend-mode: screen;
+}
+
+[data-theme="light"] .grain-overlay {
+  mix-blend-mode: multiply;
+  filter: invert(1);
+  opacity: 0.05;
 }
 
 @layer utilities {

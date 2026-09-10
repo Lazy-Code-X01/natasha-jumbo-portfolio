@@ -79,13 +79,32 @@ export const metadata: Metadata = {
   },
 };
 
+// Runs before paint (blocking, in <head>) so the page never flashes the
+// wrong theme while React hydrates. Storage key must match THEME_STORAGE_KEY
+// in lib/theme.ts and ThemeToggle.tsx. suppressHydrationWarning on <html> is
+// required since this script sets an attribute the server-rendered markup
+// doesn't have — otherwise React logs a (harmless but noisy) mismatch.
+const themeInitScript = `
+(function () {
+  try {
+    var stored = localStorage.getItem("natasha-portfolio-theme");
+    if (stored === "light") {
+      document.documentElement.setAttribute("data-theme", "light");
+    }
+  } catch (e) {}
+})();
+`;
+
 export default function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
+    <html lang="en" suppressHydrationWarning>
+      <head>
+        <script dangerouslySetInnerHTML={{ __html: themeInitScript }} />
+      </head>
       <body
         className={`${fraunces.variable} ${cormorant.variable} ${jost.variable} ${jetbrainsMono.variable} bg-canvas text-ink antialiased`}
       >
