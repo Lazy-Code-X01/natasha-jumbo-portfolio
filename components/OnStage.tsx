@@ -11,7 +11,7 @@ import { scrollFadeUpProps, staggerContainer } from "@/lib/motion";
 // motion variant (not a Tailwind rotate-* class) because Framer Motion's `y`
 // animation sets its own inline `transform`, which would otherwise silently
 // override any CSS-class-based rotation the moment the entrance animates.
-const TILT_DEGREES = [-3, 2, -2, 3];
+const TILT_DEGREES = [-3, 2, -2, 3, -1];
 
 function tiltVariants(rotate: number): Variants {
   return {
@@ -49,7 +49,7 @@ export default function OnStage() {
           whileInView="visible"
           viewport={{ once: true, amount: 0.2 }}
           variants={staggerContainer(0.1)}
-          className="flex md:grid md:grid-cols-4 gap-6 md:gap-8 overflow-x-auto md:overflow-visible no-scrollbar scroll-snap-x pt-2 pb-6"
+          className="flex lg:grid lg:grid-cols-5 gap-6 lg:gap-7 overflow-x-auto lg:overflow-visible no-scrollbar scroll-snap-x pt-2 pb-6"
         >
           {speakingHighlights.map((highlight, i) => {
             const Wrapper = highlight.url ? motion.a : motion.figure;
@@ -68,7 +68,7 @@ export default function OnStage() {
                 variants={tiltVariants(TILT_DEGREES[i % TILT_DEGREES.length])}
                 whileHover={{ rotate: 0, y: -6, scale: 1.03 }}
                 transition={{ type: "spring", stiffness: 300, damping: 20 }}
-                className="group shrink-0 w-56 md:w-full snap-start bg-canvas p-3 pb-6 shadow-md block"
+                className="group shrink-0 w-56 lg:w-full snap-start bg-canvas p-3 pb-6 shadow-md block"
               >
                 <div className="relative aspect-square w-full overflow-hidden">
                   {highlight.isPlaceholder ? (
@@ -111,8 +111,8 @@ export default function OnStage() {
           })}
         </motion.div>
 
-        {/* hints that the strip scrolls further — mobile only */}
-        <div className="md:hidden pointer-events-none absolute inset-y-0 right-0 w-10 bg-gradient-to-l from-canvas to-transparent" />
+        {/* hints that the strip scrolls further — below lg only */}
+        <div className="lg:hidden pointer-events-none absolute inset-y-0 right-0 w-10 bg-gradient-to-l from-canvas to-transparent" />
       </div>
     </section>
   );

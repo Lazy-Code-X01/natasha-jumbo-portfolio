@@ -191,10 +191,22 @@ export const stats: Stat[] = [
   { number: "1,000+", label: "Candidates recruited" },
 ];
 
-// 3 slots still pending — fill in or push a new entry; no component changes
-// needed either way. Intentionally small — On Stage is an accent strip, not
+// Some years still TODO (cards just omit the year until filled). Push a new
+// entry to add one; OnStage.tsx shows 5 in a row on desktop and a swipe
+// strip below that. Intentionally small — On Stage is an accent strip, not
 // a full highlight reel.
 export const speakingHighlights: SpeakingHighlight[] = [
+  {
+    // Added 2026-11-10 per Natasha. Title from the reel's caption ("An
+    // amazing experience at the Youth, Wealth & Future Africa Summit!").
+    // Image is the reel's own cover (360x640 portrait), saved locally since
+    // Instagram CDN links expire; cropped toward the top to keep her face in.
+    title: "Spoke at the Youth, Wealth & Future Africa Summit",
+    year: "TODO",
+    imageUrl: "/images/onstage-ywfa-summit.jpg",
+    imagePosition: "object-[50%_20%]",
+    url: "https://www.instagram.com/reel/DeSG2qItGgN/",
+  },
   {
     title: "Guest speaker at InspireHer",
     year: "TODO",
