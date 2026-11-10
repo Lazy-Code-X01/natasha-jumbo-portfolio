@@ -87,7 +87,7 @@ export default function OnStage() {
                           fill
                           className={`object-cover ${highlight.imagePosition ?? ""}`}
                         />
-                        {highlight.url && (
+                        {highlight.url && !highlight.hasBakedPlayIcon && (
                           <div className="absolute inset-0 flex items-center justify-center bg-ink/0 group-hover:bg-ink/20 transition-colors">
                             <span className="w-11 h-11 rounded-full bg-canvas/90 flex items-center justify-center shadow-md scale-90 group-hover:scale-100 transition-transform">
                               <Play className="w-4 h-4 text-ink ml-0.5" fill="currentColor" />

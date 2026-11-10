@@ -56,6 +56,9 @@ export type SpeakingHighlight = {
   // play-icon overlay signals it leads to video/external content, e.g. a
   // LinkedIn post, rather than embedding a video player in this strip.
   url?: string;
+  // true when the image already has a play icon baked in (e.g. an Instagram
+  // reel cover) — skips our own play overlay so the card doesn't show two.
+  hasBakedPlayIcon?: boolean;
   isPlaceholder?: boolean;
 };
 
@@ -206,6 +209,9 @@ export const speakingHighlights: SpeakingHighlight[] = [
     imageUrl: "/images/onstage-ywfa-summit.jpg",
     imagePosition: "object-[50%_20%]",
     url: "https://www.instagram.com/reel/DeSG2qItGgN/",
+    // Instagram only serves this cover with its own play icon burned in.
+    // Swap in a clean photo from the summit and drop this flag.
+    hasBakedPlayIcon: true,
   },
   {
     title: "Guest speaker at InspireHer",
