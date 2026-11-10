@@ -95,26 +95,22 @@ export const testimonials: Testimonial[] = [
       "Working with Natasha is so easy! A true master and professional brand strategist with a great sense of design and clarity.",
     attribution: "CEO, caveDwellerz",
   },
-  // Drafts below (2026-11-10): sample copy for Natasha to review, one per
-  // Work client. Each needs the client's approval / real wording and a
-  // name or role before the draft flag comes off.
+  // Added 2026-11-10: wording drafted for Natasha, then approved by each
+  // company, who asked to be credited by company name only.
   {
     quote:
       "Natasha sees the whole picture. She gave our brand a creative direction that felt premium and clear, and our campaigns finally had the results to match.",
     attribution: "Kingres Properties",
-    draft: true,
   },
   {
     quote:
       "Natasha understood that our brand was built on trust. Her creative direction spoke to women entrepreneurs across the country, and it showed in everything we put out.",
     attribution: "Sytiamo Technology",
-    draft: true,
   },
   {
     quote:
       "Natasha leads with taste and heart. She turned our creative into an experience people talk about long after they leave, and our bookings grew because of it.",
     attribution: "Sip and Paint.NG",
-    draft: true,
   },
 ];
 
