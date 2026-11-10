@@ -43,9 +43,9 @@ const jetbrainsMono = JetBrains_Mono({
   display: "swap",
 });
 
-const title = "Natasha Jumbo | Brand Strategist & Conference Host";
+const title = "Natasha Jumbo | Creative Director & Conference Host";
 const description =
-  "Portfolio of Natasha Jumbo, Brand Strategist and Conference Host, founder of NJ Creative Firm. Brand work paired with hosting, moderating, and stage presence.";
+  "Portfolio of Natasha Jumbo, Creative Director and Conference Host, founder of NJ Creative Firm. Brand work paired with hosting, moderating, and stage presence.";
 
 // f_auto: serves WebP/AVIF to browsers that support it, falls back to the
 // source format otherwise. q_auto: automatic quality/size optimization.

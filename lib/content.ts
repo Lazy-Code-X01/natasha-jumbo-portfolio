@@ -13,6 +13,10 @@ export type HeroContent = {
 export type Testimonial = {
   quote: string;
   attribution: string;
+  // true = sample copy written for Natasha's review, NOT a real client quote.
+  // Drafts are filtered out and never render on the site. Once the client
+  // approves (or sends their own words + a name/role), drop this flag.
+  draft?: boolean;
 };
 
 export type WorkProject = {
@@ -76,7 +80,7 @@ export type Venture = {
 
 export const hero: HeroContent = {
   name: "Natasha Jumbo",
-  role: "Brand Strategist & Conference Host",
+  role: "Creative Director & Conference Host",
   greeting: "Hello!",
   imageUrl: "/images/natasha-hero.jpg",
 };
@@ -90,6 +94,27 @@ export const testimonials: Testimonial[] = [
     quote:
       "Working with Natasha is so easy! A true master and professional brand strategist with a great sense of design and clarity.",
     attribution: "CEO, caveDwellerz",
+  },
+  // Drafts below (2026-11-10): sample copy for Natasha to review, one per
+  // Work client. Each needs the client's approval / real wording and a
+  // name or role before the draft flag comes off.
+  {
+    quote:
+      "Natasha sees the whole picture. She gave our brand a creative direction that felt premium and clear, and our campaigns finally had the results to match.",
+    attribution: "Kingres Properties",
+    draft: true,
+  },
+  {
+    quote:
+      "Natasha understood that our brand was built on trust. Her creative direction spoke to women entrepreneurs across the country, and it showed in everything we put out.",
+    attribution: "Sytiamo Technology",
+    draft: true,
+  },
+  {
+    quote:
+      "Natasha leads with taste and heart. She turned our creative into an experience people talk about long after they leave, and our bookings grew because of it.",
+    attribution: "Sip and Paint.NG",
+    draft: true,
   },
 ];
 
