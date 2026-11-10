@@ -52,7 +52,7 @@ const description =
 // w_1200,h_630,c_fill: locks to the standard OG image size regardless of
 // the source file's exact aspect ratio.
 const ogImageUrl =
-  "https://res.cloudinary.com/dioiyb833/image/upload/f_auto,q_auto,w_1200,h_630,c_fill/v1787834066/nat-og_wbhse3.png";
+  "https://res.cloudinary.com/dioiyb833/image/upload/f_auto,q_auto,w_1200,h_630,c_fill/v1794321770/Natasha_Jumbo_Creative_Branding_Banner_ajmndy.png";
 
 export const metadata: Metadata = {
   metadataBase: new URL(getBaseUrl()),
