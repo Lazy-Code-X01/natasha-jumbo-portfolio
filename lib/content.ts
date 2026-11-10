@@ -14,7 +14,7 @@ export type Testimonial = {
   quote: string;
   attribution: string;
   // true = sample copy written for Natasha's review, NOT a real client quote.
-  // Drafts are filtered out and never render on the site. Once the client
+  // Drafts show locally and on Vercel previews only, never production. Once the client
   // approves (or sends their own words + a name/role), drop this flag.
   draft?: boolean;
 };

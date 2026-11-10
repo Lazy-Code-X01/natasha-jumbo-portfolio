@@ -9,8 +9,11 @@ import { scrollFadeUpProps } from "@/lib/motion";
 const AUTOPLAY_MS = 7000;
 const SWIPE_THRESHOLD = 60;
 
-// Draft (sample, not-yet-approved) quotes never render — see Testimonial.draft.
-const testimonials = allTestimonials.filter((t) => !t.draft);
+// Draft (sample, not-yet-approved) quotes render locally and on Vercel
+// previews for review, never on production — see next.config.mjs and
+// Testimonial.draft.
+const showDrafts = process.env.SHOW_DRAFT_TESTIMONIALS === "1";
+const testimonials = allTestimonials.filter((t) => showDrafts || !t.draft);
 
 export default function Testimonials() {
   // One quote at a time, in the large centered "spotlight" style. Every slide
